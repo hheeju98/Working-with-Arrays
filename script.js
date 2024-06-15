@@ -74,3 +74,39 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE
+console.log(arr.slice(2)); // 2번 부터 배열 시작 (c,d,e)
+console.log(arr.slice(2, 4)); // 4번은 포함x (c,d)
+console.log(arr.slice(-2)); // 마지막 두 요소 (d,e)
+console.log(arr.slice(-1)); // 마지막 요소
+console.log(arr.slice(1, -2)); // b,c 1번부터 시작해서 마지막 두요소 포함x
+console.log(arr.slice());
+console.log([...arr]);
+
+// SPLICE - 실제로 배열을 바꿈
+//console.log(arr.splice(2)); //c,d,e 제거
+arr.splice(-1); // e 삭제
+arr.splice(1, 2); // b,c 삭제
+console.log(arr);
+
+// REVERSE
+arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2); // 'j', 'i', 'h', 'g', 'f'
+
+// CONCAT
+const letters = arr.concat(arr2); // mutate x
+console.log(letters);
+console.log([...arr, ...arr2]); // mutate x
+
+// JOIN
+console.log(letters.join(' - '));
+
+
+
+
