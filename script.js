@@ -65,12 +65,6 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-    ['USD', 'United States dollar'],
-    ['EUR', 'Euro'],
-    ['GBP', 'Pound sterling'],
-]);
-
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 
@@ -139,3 +133,21 @@ console.log(letters.join(' - '));
 // console.log('jonas'.at(0));
 // console.log('jonas'.at(-1));
 
+// Map
+const currencies = new Map([
+    ['USD', 'United States dollar'],
+    ['EUR', 'Euro'],
+    ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+    console.log(`${key}: ${value}`);
+});
+
+// Set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (value, _, map) { // '_' = 쓸모없는 값이라는뜻
+    console.log(`${value}: ${value}`);
+});
+// set은 key와 index를 가지지 않는다. 그러나 혼란을 막기위해 같은 형식 유지됨
