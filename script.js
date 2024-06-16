@@ -79,6 +79,13 @@ const displayMovements = function (movements) {
 }
 displayMovements(account1.movements);
 
+const calDisplayBalance = function (movements) {
+    const balance = movements.reduce((acc, mov) => acc + mov, 0);
+    labelBalance.textContent = `${balance} EUR`;
+};
+calDisplayBalance(account1.movements);
+
+
 const createUsernames = function (accs) {
     accs.forEach(function (acc) {
         acc.username = acc.owner
@@ -88,7 +95,8 @@ const createUsernames = function (accs) {
 } // forEach = 아무것도 return하지 않고 side effects를 일으키는데 사용
 
 createUsernames(accounts); // stw
-console.log(accounts)
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -99,18 +107,18 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 for (const [i, movement] of movements.entries()) {
     if (movement > 0) {
-        console.log(`Movement ${i + 1}: You deposited ${movement}`);
+        console.log(`Movement ${ i + 1 }: You deposited ${ movement } `);
     } else {
-        console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+        console.log(`Movement ${ i + 1 }: You withdrew ${ Math.abs(movement) } `);
     }
 }
 
 //// forEach  첫번째 파라미터 = 현재값 두번째 파라미터 = 인덱스
 movements.forEach(function (mov, i, arr) {
     if (mov > 0) {
-        console.log(`Movement ${i + 1}: You deposited ${mov}`);
+        console.log(`Movement ${ i + 1 }: You deposited ${ mov } `);
     } else {
-        console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+        console.log(`Movement ${ i + 1 }: You withdrew ${ Math.abs(mov) } `);
     }
 })
 // forEach =  항상 전체 배열을 순회한다
@@ -171,14 +179,14 @@ const currencies = new Map([
 ]);
 
 currencies.forEach(function (value, key, map) {
-    console.log(`${key}: ${value}`);
+    console.log(`${key}: ${value} `);
 });
 
 // Set
 const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
 console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, map) { // '_' = 쓸모없는 값이라는뜻
-    console.log(`${value}: ${value}`);
+    console.log(`${value}: ${value} `);
 });
 // set은 key와 index를 가지지 않는다. 그러나 혼란을 막기위해 같은 형식 유지됨
 
@@ -191,9 +199,9 @@ const checkDogs = function (dogsJulia, dogsKate) {
     const dogs = dogsJuliaCorrected.concat(dogsKate);
     dogs.forEach(function (dog, i) {
         if (dog >= 3) {
-            console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
+            console.log(`Dog number ${ i + 1 } is an adult, and is ${ dog } years old`);
         } else {
-            console.log(`Dog number ${i + 1} is still a puppy`);
+            console.log(`Dog number ${ i + 1 } is still a puppy`);
         }
     })
 }
@@ -230,9 +238,9 @@ const movementsDescriptions2 = movements.map((mov, i) =>
 const movementsDescriptions = movements.map((mov, i, arr) => {
     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)} `
     if (mov > 0) {
-        return `Movement ${i + 1}: You deposited ${mov}`;
+        return `Movement ${i + 1}: You deposited ${mov} `;
     } else {
-        return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+        return `Movement ${i + 1}: You withdrew ${Math.abs(mov)} `;
     }
 })
 
@@ -251,3 +259,28 @@ for (const mov of movements) if (mov > 0) depositFor.push(mov);
 console.log(depositFor);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+
+console.log(movements);
+// accumulator -> SNOWBALL
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//     console.log(`Iteration ${ i }: ${ acc } `);
+//     return acc + cur;
+// }, 0);
+
+const balance = movements.reduce((acc, cur) =>
+    acc + cur, 0);
+console.log(balance);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+console.log(balance2);
+
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+    if (acc > mov)
+        return acc;
+    else
+        return mov;
+}, movements[0]);
+console.log(max);
