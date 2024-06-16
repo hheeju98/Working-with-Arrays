@@ -79,6 +79,16 @@ const displayMovements = function (movements) {
 }
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+    accs.forEach(function (acc) {
+        acc.username = acc.owner
+            .toLowerCase().split(' ').map(name =>
+                name[0]).join('');
+    })
+} // forEach = 아무것도 return하지 않고 side effects를 일으키는데 사용
+
+createUsernames(accounts); // stw
+console.log(accounts)
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
