@@ -169,3 +169,21 @@ currenciesUnique.forEach(function (value, _, map) { // '_' = 쓸모없는 값이
     console.log(`${value}: ${value}`);
 });
 // set은 key와 index를 가지지 않는다. 그러나 혼란을 막기위해 같은 형식 유지됨
+
+const checkDogs = function (dogsJulia, dogsKate) {
+    const dogsJuliaCorrected = dogsJulia.slice();
+    dogsJuliaCorrected.splice(0, 1);
+    dogsJuliaCorrected.splice(-2);
+    // dogsJulia.slice(1, 3);
+    const dogs = dogsJuliaCorrected.concat(dogsKate);
+    dogs.forEach(function (dog, i) {
+        if (dog >= 3) {
+            console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
+        } else {
+            console.log(`Dog number ${i + 1} is still a puppy`);
+        }
+    })
+}
+
+//checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
