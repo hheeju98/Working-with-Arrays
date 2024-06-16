@@ -83,6 +83,7 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 // LECTURES
 
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 
@@ -103,6 +104,7 @@ movements.forEach(function (mov, i, arr) {
     }
 })
 // forEach =  항상 전체 배열을 순회한다
+*/
 
 /////////////////////////////////////////////////
 
@@ -170,6 +172,7 @@ currenciesUnique.forEach(function (value, _, map) { // '_' = 쓸모없는 값이
 });
 // set은 key와 index를 가지지 않는다. 그러나 혼란을 막기위해 같은 형식 유지됨
 
+/*
 const checkDogs = function (dogsJulia, dogsKate) {
     const dogsJuliaCorrected = dogsJulia.slice();
     dogsJuliaCorrected.splice(0, 1);
@@ -187,3 +190,41 @@ const checkDogs = function (dogsJulia, dogsKate) {
 
 //checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function (mov) {
+//     return mov * eurToUsd;
+// });
+
+const movementsUSD = movements.map(mov =>
+    mov * eurToUsd
+); // 파라미터가 하나일 경우 (), return 생략가능
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+console.log(movementsUSDfor);
+
+
+const movementsDescriptions2 = movements.map((mov, i) =>
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)} `
+)
+
+const movementsDescriptions = movements.map((mov, i, arr) => {
+    `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)} `
+    if (mov > 0) {
+        return `Movement ${i + 1}: You deposited ${mov}`;
+    } else {
+        return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+    }
+})
+
+console.log(movementsDescriptions);
+console.log(movementsDescriptions2);
